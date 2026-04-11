@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  },
+  "name": "mythicapi",
+  "version": "1.0.0",
+  "description": "MythosAPI is a RESTful API providing structured data on the world's ancient mythologies. Explore gods, creatures, and mythological traditions from over 20 cultures spanning thousands of years of human history.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MevanKoda/MythicAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/MevanKoda/MythicAPI/issues"
+  },
+  "homepage": "https://github.com/MevanKoda/MythicAPI#readme"
+}

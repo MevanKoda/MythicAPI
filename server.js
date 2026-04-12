@@ -64,7 +64,7 @@ app.get('/v1/',(req,res)=>{
             const data =  result.rows[0].json_agg
             res.status(200).json(data)
         }else{
-            res.status(500).json({message:"Error fetching data"})
+            res.status(500).json({message:"Failed to fetch data"})
         }
     })
 
@@ -77,7 +77,7 @@ app.get('/v1/mythologies',(req,res)=>{
             const data =  result.rows
             res.status(200).json(data)
         }else{
-            res.status(500).json({message:err})
+            res.status(500).json({message:"Failed to fetch data"})
 
     }
     })
@@ -93,7 +93,7 @@ app.get('/v1/gods',(req,res)=>{
             res.status(200).json(data)
 
         }else{
-            res.status(500).json({message:err})
+            res.status(500).json({message:"Failed to fetch data"})
 
         }
     })
@@ -105,10 +105,10 @@ app.get('/v1/creatures',(req,res)=>{
     pool.query(`SELECT * FROM creature;`, (err,result)=>{
         if(!err){
             const data =  result.rows
-         res.status(200).json(data)
+            res.status(200).json(data)
 
         }else{
-            res.status(500).json({message:err})
+            res.status(500).json({message:"Failed to fetch data"})
 
         }
     })
@@ -116,6 +116,6 @@ app.get('/v1/creatures',(req,res)=>{
 })
 
 
-app.listen(process.env.PORT,(req,res)=>{
+app.listen(process.env.PORT,()=>{
     console.log("Server is running✅")
 })

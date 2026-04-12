@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "dotenv": "^17.4.1",
     "express": "^5.2.1",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "pg": "^8.20.0"
   },
   "name": "mythicapi",
   "version": "1.0.0",

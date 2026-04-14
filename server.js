@@ -20,6 +20,16 @@ const limiter = rateLimit({
 //Apply Rate limiting middleware to all requests
 app.use(limiter)
 
+
+app.get('/',(req,res)=>{
+	res.send({
+		message:"Welcome to MythicAPI⚡", 
+		version:"1.0.0",
+		endpoints:["/", "/v1/" , "/v1/mythologies" , "/v1/gods", "/v1/creatures"]
+	})
+})
+
+
 app.get('/v1/',(req,res)=>{
 
     const query = `SELECT json_agg(json_build_object(
@@ -129,6 +139,6 @@ app.get('/v1/creatures',(req,res)=>{
 })
 
 
-app.listen(process.env.PORT,()=>{
+app.listen(process.env.PORT || 3000,()=>{
     console.log("Server is running✅")
 })

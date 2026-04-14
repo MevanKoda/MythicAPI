@@ -5,14 +5,7 @@ dotenv.config()
 
 const pool = new Pool({
     //Specify Connection params
-
-    host: process.env.DB_HOST,
-    user:process.env.DB_USER,
-    port:process.env.DB_PORT,
-    password:process.env.DB_PASSWORD,
-    database:process.env.DB_NAME,
-    max:10,
-    connectionTimeoutMillis : 100,
-    idleTimeoutMillis : 10
+    connectionString: process.env.DATABASE_URL,
+    ssl:{rejectUnauthorized:false},
 })
 export default pool;

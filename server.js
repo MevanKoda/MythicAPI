@@ -30,7 +30,7 @@ app.get('/',(req,res)=>{
 })
 
 
-app.get('/v1/',(req,res)=>{
+app.get('/v1',(req,res)=>{
 
     const query = `SELECT json_agg(json_build_object(
 	'mythology_name', title,

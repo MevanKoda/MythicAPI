@@ -1,4 +1,5 @@
 import express from 'express'
+import {rateLimit} from 'express-rate-limit'
 import pool from './db/database.js'
 import dotenv from 'dotenv'
 
@@ -6,6 +7,18 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 
+//Rate Limiting
+const limiter = rateLimit({
+	windowMs: 15* 60 * 1000, //15 minute
+	limit:100, //Limit each IP to 100 reqs per 1 minute
+	message:'Request limit exceed, Try again later🌝',
+	standardHeaders:'draft-8',
+	legacyHeaders:false,
+	ipv6Subnet:56
+})
+
+//Apply Rate limiting middleware to all requests
+app.use(limiter)
 
 app.get('/v1/',(req,res)=>{
 

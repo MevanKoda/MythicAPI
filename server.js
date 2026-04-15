@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors';
 import {rateLimit} from 'express-rate-limit'
 import pool from './db/database.js'
 import dotenv from 'dotenv'
@@ -7,7 +8,7 @@ import swaggerJsdoc from 'swagger-jsdoc'
 dotenv.config()
 const app = express()
 app.use(express.json())
-
+app.use(cors())
 
 
 const options = {

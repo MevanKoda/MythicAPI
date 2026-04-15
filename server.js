@@ -2,39 +2,10 @@ import express from 'express'
 import {rateLimit} from 'express-rate-limit'
 import pool from './db/database.js'
 import dotenv from 'dotenv'
-import swaggerJsdoc from 'swagger-jsdoc'
 
 dotenv.config()
 const app = express()
 app.use(express.json())
-
-
-
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'MythicAPI',
-      version: '1.0.0',
-      description: `MythicAPI is a RESTful API providing structured data on the world's ancient mythologies. Explore gods, creatures, and mythological traditions from over 20 cultures spanning thousands of years of human history.'`,
-    },
-    servers: [{ url: 'https://mythicapi.onrender.com' },
-		{url : 'http://localhost:3000'}
-	],
-  },
-  // Path to the API docs (where your routes are)
-  apis: ['./routes/*.js', 'server.js'], 
-};
-
-const specs = swaggerJsdoc(options);
-
-app.get('/openapi.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(specs);
-});
-
-
-
 
 //Rate Limiting
 const limiter = rateLimit({

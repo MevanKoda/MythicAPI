@@ -25,13 +25,15 @@ app.get('/',(req,res)=>{
 	res.send({
 		message:"Welcome to MythicAPI⚡", 
 		version:"1.0.0",
-		endpoints:["/", "/v1/" , "/v1/mythologies" , "/v1/gods", "/v1/creatures"]
+		endpoints:["/", "/docs", "/v1/" , "/v1/mythologies" , "/v1/gods", "/v1/creatures"]
 	})
 })
 
+app.get('/docs',(req,res)=>{
+	res.redirect("https://documenter.getpostman.com/view/41926613/2sBXqFNNW4")
+})
 
 app.get('/v1',(req,res)=>{
-
     const query = `SELECT json_agg(json_build_object(
 	'mythology_name', title,
 	'region', region,

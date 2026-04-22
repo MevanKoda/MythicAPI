@@ -30,7 +30,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/docs',(req,res)=>{
-	res.redirect("https://documenter.getpostman.com/view/41926613/2sBXqFNNW4")
+	res.redirect(process.env.DOCS_URL)
 })
 
 app.get('/v1',(req,res)=>{

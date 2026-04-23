@@ -155,6 +155,23 @@ app.get('/v1/creatures',(req,res)=>{
 
 })
 
+app.get('/v1/creatures/:name', (req,res)=>{
+	const {name} = req.params
+	pool.query(`SELECT * fROM creature WHERE name = $1`, [name], (err,result)=>{
+		if(!err){
+			const data = result.rows
+			if(data.length){
+				res.status(200).json(data)
+			}else{
+				res.status(404).json({message:"No data found"})
+			}
+		}else{
+			res.status(500).json({message : "Failed to fetch data"})
+		}
+	})
+
+})
+
 
 app.listen(process.env.PORT || 3000,()=>{
     console.log("Server is running✅")

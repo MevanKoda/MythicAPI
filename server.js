@@ -109,6 +109,22 @@ app.get('/v1/mythologies',(req,res)=>{
 
 })
 
+app.get('/v1/mythologies/:name', (req,res)=>{
+	const {name} = req.params
+	pool.query(`SELECT * FROM myth WHERE title = $1`,[name],(err,result)=>{
+		if(!err){
+			const data = result.rows
+			if(data.length){
+				res.status(200).json(data)
+			}else{
+				res.status(404).json({message:"No data found"})
+			}
+		}else{
+			res.status(500).json({message:"Failed to fetch data"})
+		}
+	})
+})
+
 
 app.get('/v1/gods',(req,res)=>{
 
@@ -130,7 +146,11 @@ app.get('/v1/gods/:name',(req,res)=>{
 	pool.query(`SELECT * FROM god WHERE name = $1`,[name],(err,result)=>{
 		if(!err){
 			const data = result.rows
-			res.status(200).json(data)
+			if(data.length){
+				res.status(200).json(data)
+			}else{
+				res.status(404).json({message:"No data found"})
+			}
 		}else{
 			res.status(500).json({message: "Failed to fetch data"})
 		}

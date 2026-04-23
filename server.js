@@ -125,6 +125,21 @@ app.get('/v1/gods',(req,res)=>{
 
 })
 
+app.get('/v1/gods/:name',(req,res)=>{
+	const {name} = req.params
+	pool.query(`SELECT * FROM god WHERE name = $1`,[name],(err,result)=>{
+		if(!err){
+			const data = result.rows
+			res.status(200).json(data)
+		}else{
+			res.status(500).json({message: "Failed to fetch data"})
+		}
+	})
+})
+
+
+
+
 app.get('/v1/creatures',(req,res)=>{
 
     pool.query(`SELECT * FROM creature;`, (err,result)=>{

@@ -25,7 +25,7 @@ app.get('/',(req,res)=>{
 	res.send({
 		message:"Welcome to MythicAPI⚡", 
 		version:"1.0.0",
-		endpoints:["/", "/docs", "/v1/" , "/v1/mythologies" , "/v1/gods", "/v1/creatures"]
+		endpoints:["/", "/docs", "/v1/" , "/v1/mythologies" , "/v1/gods", "/v1/creatures", "/v1/mythologies/:name", "/v1/gods/:name", "/v1/creatures/:name"]
 	})
 })
 

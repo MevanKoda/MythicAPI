@@ -24,6 +24,7 @@ app.use(limiter)
 app.get('/',(req,res)=>{
 	res.send({
 		message:"Welcome to MythicAPI⚡", 
+		description:"MythicAPI is a RESTful API providing structured data on the world's ancient mythologies. Explore gods, creatures, and mythological traditions from over 20 cultures spanning thousands of years of human history.",
 		version:"1.0.0",
 		endpoints:["/", "/docs", "/v1/" , "/v1/mythologies" , "/v1/gods", "/v1/creatures", "/v1/mythologies/:name", "/v1/gods/:name", "/v1/creatures/:name"]
 	})
